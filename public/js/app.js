@@ -1,21 +1,20 @@
 
 
 
-const WeatherForm = document.querySelector('form')
+const weatherForm = document.querySelector('form')
 const Search =  document.querySelector('input')
 const messageOne = document.getElementById('message-1')
 const messageTwo = document.getElementById('message-2')
 
-//messageOne.textContent='From Java Script'
-
-WeatherForm.addEventListener('Submit', (e)=>{
+weatherForm.addEventListener('submit', (e)=>{
     e.preventDefault()
-
+    
     const location = Search.value 
+    
     messageOne.textContent='Loading...'
     messageTwo.textContent = ''
 
-        fetch('/weather?address='+location).then((response)=>{
+        fetch('/weather?address='+ location).then((response)=>{
         response.json().then((data)=>{
            if(data.error){
             messageOne.textContent=data.error
@@ -26,5 +25,5 @@ WeatherForm.addEventListener('Submit', (e)=>{
         })
     })
 
-    //console.log('testing')
+   
 })

@@ -96,12 +96,12 @@ app.get('/weather', (req, res)=>{
            return res.send({ error })
         }
 
-        forecast(latitude, longitude, (error, summary, CurrentTemperature, RainChances)=>{
+        forecast(latitude, longitude, (error, {summary, CurrentTemperature, RainChances})=>{
             
             if(error){
                 return res.send({ error })
             }
-          
+           // console.log(error,CurrentTemperature, location, address, summary)
             res.send({
                 forecast: CurrentTemperature,
                 location,
